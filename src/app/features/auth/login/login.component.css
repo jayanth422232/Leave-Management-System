@@ -1,0 +1,5 @@
+.login-wrapper { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f2f5; }
+.login-card { width: 380px; padding: 16px; }
+.full-width { width: 100%; }
+.error { color: #c62828; margin: 0 0 12px; }
+mat-card-title { margin-bottom: 20px; }

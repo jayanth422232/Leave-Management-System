@@ -1,0 +1,14 @@
+<h2>Welcome, {{ user.name }}</h2>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else {
+  <div class="cards-row">
+    @for (type of leaveTypes(); track type.id) {
+      <app-summary-card [label]="type.name" [value]="balanceFor(type)" icon="event_available" />
+    }
+  </div>
+
+  <h3>Recent Requests</h3>
+  <app-leave-table [requests]="recentRequests()" [leaveTypes]="leaveTypes()" />
+}

@@ -1,0 +1,3 @@
+.cards-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.cards-row app-summary-card { flex: 1 1 160px; }
+h3 { margin-top: 24px; }
