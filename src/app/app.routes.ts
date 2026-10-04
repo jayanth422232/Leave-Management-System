@@ -10,6 +10,9 @@ import { roleGuard } from './core/guards/role.guard';
 import { ApplyLeaveComponent } from './features/employee/apply-leave/apply-leave.component';
 import { MyLeavesComponent } from './features/employee/my-leaves/my-leaves.component';
 import { LeaveDetailsComponent } from './features/employee/leave-details/leave-details.component';
+import { PendingApprovalsComponent } from './features/manager/pending-approvals/pending-approvals.component';
+import { ReviewLeaveComponent } from './features/manager/review-leave/review-leave.component';
+import { TeamLeavesComponent } from './features/manager/team-leaves/team-leaves.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -39,8 +42,9 @@ export const routes: Routes = [
         data: { roles: ['MANAGER'] },
         children: [
           { path: 'dashboard', component: ManagerDashboardComponent },
-          { path: 'team-leaves', component: PlaceholderComponent, data: { title: 'Team Leaves' } },
-          { path: 'pending-approvals', component: PlaceholderComponent, data: { title: 'Pending Approvals' } },
+          { path: 'team-leaves', component: TeamLeavesComponent },
+          { path: 'pending-approvals', component: PendingApprovalsComponent },
+          { path: 'review-leave/:id', component: ReviewLeaveComponent },
           { path: 'team-calendar', component: PlaceholderComponent, data: { title: 'Team Calendar' } },
         ],
       },

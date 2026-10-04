@@ -1,0 +1,34 @@
+@if (loading()) {
+  <p>Loading...</p>
+} @else if (request(); as r) {
+  <mat-card class="review-card">
+    <h2>Review Leave Request</h2>
+
+    <div class="info-grid">
+      <span class="label">Employee</span><span>{{ employee()?.name }}</span>
+      <span class="label">Leave Type</span><span>{{ typeName(r.leaveTypeId) }}</span>
+      <span class="label">From</span><span>{{ r.fromDate | date: 'dd-MMM-yyyy' }}</span>
+      <span class="label">To</span><span>{{ r.toDate | date: 'dd-MMM-yyyy' }}</span>
+      <span class="label">Days</span><span>{{ r.days }}</span>
+    </div>
+
+    <h3>Reason</h3>
+    <p>{{ r.reason }}</p>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Manager Comment</mat-label>
+      <textarea matInput [formControl]="commentControl" rows="3" placeholder="Required if rejecting"></textarea>
+    </mat-form-field>
+
+    @if (errorMessage()) {
+      <p class="error">{{ errorMessage() }}</p>
+    }
+
+    <div class="actions">
+      <button mat-flat-button color="primary" [disabled]="submitting()" (click)="approve()">Approve</button>
+      <button mat-flat-button color="warn" [disabled]="submitting()" (click)="reject()">Reject</button>
+    </div>
+  </mat-card>
+} @else {
+  <p>Leave request not found.</p>
+}

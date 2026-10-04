@@ -1,0 +1,6 @@
+.review-card { max-width: 550px; padding: 24px; }
+.info-grid { display: grid; grid-template-columns: 140px 1fr; row-gap: 10px; margin: 16px 0; }
+.label { color: #666; font-weight: 500; }
+.full-width { width: 100%; margin: 16px 0; }
+.error { color: #c62828; margin: 0 0 12px; }
+.actions { display: flex; gap: 12px; }

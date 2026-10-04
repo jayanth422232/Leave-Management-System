@@ -1,0 +1,12 @@
+<h2>Welcome, {{ manager.name }}</h2>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else {
+  <div class="cards-row">
+    <app-summary-card label="Pending Requests" [value]="pendingCount()" icon="pending_actions" />
+    <app-summary-card label="Approved" [value]="approvedCount()" icon="check_circle" />
+    <app-summary-card label="Rejected" [value]="rejectedCount()" icon="cancel" />
+    <app-summary-card label="Team Members" [value]="teamMembers().length" icon="groups" />
+  </div>
+}

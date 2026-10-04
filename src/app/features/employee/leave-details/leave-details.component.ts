@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,7 +11,7 @@ import { StatusBadgeComponent } from '../../../shared/components/status-badge/st
 @Component({
   selector: 'app-leave-details',
   standalone: true,
-  imports: [DatePipe, MatCardModule, MatButtonModule, StatusBadgeComponent, RouterLink],
+  imports: [DatePipe, MatCardModule, MatButtonModule, StatusBadgeComponent],
   templateUrl: './leave-details.component.html',
   styleUrl: './leave-details.component.css',
 })

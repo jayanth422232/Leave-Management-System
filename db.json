@@ -98,8 +98,8 @@
       "toDate": "2026-10-21",
       "days": 2,
       "reason": "Fever and doctor advised rest",
-      "status": "PENDING",
-      "managerComment": "",
+      "status": "REJECTED",
+      "managerComment": "not allowed leave on that date",
       "appliedOn": "2026-09-25"
     },
     {

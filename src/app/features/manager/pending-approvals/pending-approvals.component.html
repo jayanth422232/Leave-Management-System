@@ -1,0 +1,44 @@
+<h2>Pending Approvals</h2>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else if (requests().length === 0) {
+  <p class="empty">No pending requests. You're all caught up.</p>
+} @else {
+  <table mat-table [dataSource]="requests()" class="full-width">
+    <ng-container matColumnDef="employee">
+      <th mat-header-cell *matHeaderCellDef>Employee</th>
+      <td mat-cell *matCellDef="let r">{{ employeeName(r.userId) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Leave</th>
+      <td mat-cell *matCellDef="let r">{{ typeName(r.leaveTypeId) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="from">
+      <th mat-header-cell *matHeaderCellDef>From</th>
+      <td mat-cell *matCellDef="let r">{{ r.fromDate | date: 'dd-MMM-yyyy' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="to">
+      <th mat-header-cell *matHeaderCellDef>To</th>
+      <td mat-cell *matCellDef="let r">{{ r.toDate | date: 'dd-MMM-yyyy' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="days">
+      <th mat-header-cell *matHeaderCellDef>Days</th>
+      <td mat-cell *matCellDef="let r">{{ r.days }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let r">
+        <button mat-flat-button color="primary" (click)="review(r.id)">Review</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+}
