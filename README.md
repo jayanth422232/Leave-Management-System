@@ -1,59 +1,49 @@
-# LeaveManagement
+# Employee Leave Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
+A role-based leave management web app built with Angular 17+, Angular Material, and a mock REST API (JSON Server).
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Authentication** with role-based routing (Employee / Manager / Admin), route guards
+- **Employee**: dashboard, apply leave (reactive form with validations), my leaves (search/filter/sort/pagination), leave details with status timeline, leave balance, profile
+- **Manager**: dashboard, pending approvals, approve/reject with mandatory rejection comment, team leaves, team calendar
+- **Admin**: dashboard, employee management (CRUD), leave type management (CRUD), reports
 
-```bash
-ng serve
-```
+## Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular 17+ (standalone components, signals)
+- Angular Material
+- Reactive Forms
+- RxJS
+- JSON Server (mock REST API)
 
-## Code scaffolding
+## Getting Started
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+\`\`\`bash
+npm install
+\`\`\`
 
-```bash
-ng generate component component-name
-```
+Run the mock API and the app in two separate terminals:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+\`\`\`bash
+npm run api      # starts json-server on http://localhost:3000
+ng serve         # starts the app on http://localhost:4200
+\`\`\`
 
-```bash
-ng generate --help
-```
+## Test Users
 
-## Building
+| Role     | Email               | Password  |
+|----------|---------------------|-----------|
+| Employee | employee@test.com   | Test@123  |
+| Manager  | manager@test.com    | Test@123  |
+| Admin    | admin@test.com      | Test@123  |
 
-To build the project run:
+## Project Structure
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+\`\`\`
+src/app/
+├── core/          # models, services, guards, interceptors
+├── shared/        # reusable components (summary-card, status-badge, leave-table)
+├── layout/        # main app shell (toolbar + side menu)
+└── features/      # feature modules: auth, employee, manager, admin
+\`\`\`
