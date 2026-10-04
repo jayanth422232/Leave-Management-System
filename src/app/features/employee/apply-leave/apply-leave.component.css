@@ -1,0 +1,6 @@
+.form-card { max-width: 600px; padding: 24px; }
+.full-width { width: 100%; margin-bottom: 8px; }
+.row { display: flex; gap: 16px; }
+.row mat-form-field { flex: 1; }
+.days-display { margin: 8px 0 16px; }
+.error { color: #c62828; margin: 0 0 12px; }

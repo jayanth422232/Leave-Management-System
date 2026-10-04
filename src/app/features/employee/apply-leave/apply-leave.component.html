@@ -1,0 +1,63 @@
+<mat-card class="form-card">
+  <h2>Apply Leave</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Leave Type</mat-label>
+      <mat-select formControlName="leaveTypeId">
+        @for (type of leaveTypes(); track type.id) {
+          <mat-option [value]="type.id">{{ type.name }} ({{ type.maxDays }} days/year)</mat-option>
+        }
+      </mat-select>
+      @if (form.controls.leaveTypeId.touched && form.controls.leaveTypeId.hasError('required')) {
+        <mat-error>Leave type is required</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>From Date</mat-label>
+        <input matInput [matDatepicker]="fromPicker" [min]="minDate" formControlName="fromDate" />
+        <mat-datepicker-toggle matSuffix [for]="fromPicker" />
+        <mat-datepicker #fromPicker />
+        @if (form.controls.fromDate.touched && form.controls.fromDate.hasError('required')) {
+          <mat-error>From date is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>To Date</mat-label>
+        <input matInput [matDatepicker]="toPicker" [min]="form.controls.fromDate.value ?? minDate" formControlName="toDate" />
+        <mat-datepicker-toggle matSuffix [for]="toPicker" />
+        <mat-datepicker #toPicker />
+        @if (form.controls.toDate.touched && form.controls.toDate.hasError('required')) {
+          <mat-error>To date is required</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    @if (form.hasError('dateRange') && form.controls.toDate.touched) {
+      <p class="error">To Date cannot be earlier than From Date</p>
+    }
+
+    <p class="days-display">Number of Days: <strong>{{ numberOfDays() }}</strong></p>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Reason</mat-label>
+      <textarea matInput formControlName="reason" rows="3"></textarea>
+      @if (form.controls.reason.touched && form.controls.reason.hasError('required')) {
+        <mat-error>Reason is required</mat-error>
+      } @else if (form.controls.reason.touched && form.controls.reason.hasError('minlength')) {
+        <mat-error>Reason must be at least 10 characters</mat-error>
+      }
+    </mat-form-field>
+
+    @if (errorMessage()) {
+      <p class="error">{{ errorMessage() }}</p>
+    }
+
+    <button mat-flat-button color="primary" [disabled]="submitting()">
+      {{ submitting() ? 'Submitting...' : 'Submit' }}
+    </button>
+  </form>
+</mat-card>

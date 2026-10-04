@@ -1,22 +1,154 @@
 {
   "users": [
-    { "id": 1, "name": "Ravi Kumar", "email": "employee@test.com", "password": "Test@123", "role": "EMPLOYEE", "department": "Finance", "managerId": 2, "active": true },
-    { "id": 2, "name": "Meera Rao", "email": "manager@test.com", "password": "Test@123", "role": "MANAGER", "department": "IT", "managerId": null, "active": true },
-    { "id": 3, "name": "Admin HR", "email": "admin@test.com", "password": "Test@123", "role": "ADMIN", "department": "HR", "managerId": null, "active": true },
-    { "id": 4, "name": "Anil Sharma", "email": "anil@abc.com", "password": "Test@123", "role": "EMPLOYEE", "department": "IT", "managerId": 2, "active": true },
-    { "id": 5, "name": "Suresh Reddy", "email": "suresh@abc.com", "password": "Test@123", "role": "EMPLOYEE", "department": "HR", "managerId": 2, "active": true }
+    {
+      "id": 1,
+      "name": "Ravi Kumar",
+      "email": "employee@test.com",
+      "password": "Test@123",
+      "role": "EMPLOYEE",
+      "department": "Finance",
+      "managerId": 2,
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Meera Rao",
+      "email": "manager@test.com",
+      "password": "Test@123",
+      "role": "MANAGER",
+      "department": "IT",
+      "managerId": null,
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Admin HR",
+      "email": "admin@test.com",
+      "password": "Test@123",
+      "role": "ADMIN",
+      "department": "HR",
+      "managerId": null,
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Anil Sharma",
+      "email": "anil@abc.com",
+      "password": "Test@123",
+      "role": "EMPLOYEE",
+      "department": "IT",
+      "managerId": 2,
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Suresh Reddy",
+      "email": "suresh@abc.com",
+      "password": "Test@123",
+      "role": "EMPLOYEE",
+      "department": "HR",
+      "managerId": 2,
+      "active": true
+    }
   ],
   "leaveTypes": [
-    { "id": 1, "name": "Annual Leave", "maxDays": 20, "active": true },
-    { "id": 2, "name": "Sick Leave", "maxDays": 10, "active": true },
-    { "id": 3, "name": "Casual Leave", "maxDays": 5, "active": true },
-    { "id": 4, "name": "Maternity Leave", "maxDays": 180, "active": true }
+    {
+      "id": 1,
+      "name": "Annual Leave",
+      "maxDays": 20,
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Sick Leave",
+      "maxDays": 10,
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Casual Leave",
+      "maxDays": 5,
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Maternity Leave",
+      "maxDays": 180,
+      "active": true
+    }
   ],
   "leaveRequests": [
-    { "id": 1, "userId": 1, "leaveTypeId": 1, "fromDate": "2026-10-10", "toDate": "2026-10-12", "days": 3, "reason": "Family function", "status": "APPROVED", "managerComment": "Approved. Have a good trip.", "appliedOn": "2026-09-20" },
-    { "id": 2, "userId": 1, "leaveTypeId": 2, "fromDate": "2026-10-20", "toDate": "2026-10-21", "days": 2, "reason": "Fever and doctor advised rest", "status": "PENDING", "managerComment": "", "appliedOn": "2026-09-25" },
-    { "id": 3, "userId": 1, "leaveTypeId": 3, "fromDate": "2026-11-05", "toDate": "2026-11-05", "days": 1, "reason": "Personal work at the bank", "status": "REJECTED", "managerComment": "Release scheduled that day.", "appliedOn": "2026-09-26" },
-    { "id": 4, "userId": 4, "leaveTypeId": 2, "fromDate": "2026-10-15", "toDate": "2026-10-16", "days": 2, "reason": "Viral fever and rest", "status": "PENDING", "managerComment": "", "appliedOn": "2026-09-27" },
-    { "id": 5, "userId": 5, "leaveTypeId": 1, "fromDate": "2026-10-26", "toDate": "2026-10-28", "days": 3, "reason": "Visiting hometown", "status": "PENDING", "managerComment": "", "appliedOn": "2026-09-27" }
+    {
+      "id": 1,
+      "userId": 1,
+      "leaveTypeId": 1,
+      "fromDate": "2026-10-10",
+      "toDate": "2026-10-12",
+      "days": 3,
+      "reason": "Family function",
+      "status": "APPROVED",
+      "managerComment": "Approved. Have a good trip.",
+      "appliedOn": "2026-09-20"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "leaveTypeId": 2,
+      "fromDate": "2026-10-20",
+      "toDate": "2026-10-21",
+      "days": 2,
+      "reason": "Fever and doctor advised rest",
+      "status": "PENDING",
+      "managerComment": "",
+      "appliedOn": "2026-09-25"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "leaveTypeId": 3,
+      "fromDate": "2026-11-05",
+      "toDate": "2026-11-05",
+      "days": 1,
+      "reason": "Personal work at the bank",
+      "status": "REJECTED",
+      "managerComment": "Release scheduled that day.",
+      "appliedOn": "2026-09-26"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "leaveTypeId": 2,
+      "fromDate": "2026-10-15",
+      "toDate": "2026-10-16",
+      "days": 2,
+      "reason": "Viral fever and rest",
+      "status": "PENDING",
+      "managerComment": "",
+      "appliedOn": "2026-09-27"
+    },
+    {
+      "id": 5,
+      "userId": 5,
+      "leaveTypeId": 1,
+      "fromDate": "2026-10-26",
+      "toDate": "2026-10-28",
+      "days": 3,
+      "reason": "Visiting hometown",
+      "status": "PENDING",
+      "managerComment": "",
+      "appliedOn": "2026-09-27"
+    },
+    {
+      "userId": 1,
+      "leaveTypeId": 3,
+      "fromDate": "2026-12-02",
+      "toDate": "2026-12-04",
+      "days": 0,
+      "reason": "going native home state",
+      "status": "PENDING",
+      "managerComment": "",
+      "appliedOn": "2026-10-04",
+      "id": 6
+    }
   ]
 }

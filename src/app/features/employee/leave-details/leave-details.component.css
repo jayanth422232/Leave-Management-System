@@ -1,0 +1,7 @@
+.details-card { max-width: 500px; padding: 24px; }
+.info-grid { display: grid; grid-template-columns: 140px 1fr; row-gap: 10px; margin: 16px 0; }
+.label { color: #666; font-weight: 500; }
+.timeline { display: flex; flex-direction: column; gap: 8px; margin: 12px 0 24px; }
+.timeline-step { display: flex; align-items: center; gap: 10px; color: #aaa; }
+.timeline-step.done { color: #1e7e34; font-weight: 600; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; }

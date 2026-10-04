@@ -1,0 +1,37 @@
+@if (loading()) {
+  <p>Loading...</p>
+} @else if (request(); as r) {
+  <mat-card class="details-card">
+    <h2>Leave Request</h2>
+
+    <div class="info-grid">
+      <span class="label">Leave Type</span><span>{{ typeName(r.leaveTypeId) }}</span>
+      <span class="label">From</span><span>{{ r.fromDate | date: 'dd-MMM-yyyy' }}</span>
+      <span class="label">To</span><span>{{ r.toDate | date: 'dd-MMM-yyyy' }}</span>
+      <span class="label">Days</span><span>{{ r.days }}</span>
+      <span class="label">Status</span><span><app-status-badge [status]="r.status" /></span>
+    </div>
+
+    <h3>Reason</h3>
+    <p>{{ r.reason }}</p>
+
+    @if (r.managerComment) {
+      <h3>Manager Comment</h3>
+      <p>{{ r.managerComment }}</p>
+    }
+
+    <h3>Timeline</h3>
+    <div class="timeline">
+      @for (step of timelineSteps(); track step.label) {
+        <div class="timeline-step" [class.done]="step.done">
+          <span class="dot"></span>
+          <span>{{ step.label }}</span>
+        </div>
+      }
+    </div>
+
+    <button mat-button (click)="router.navigate(['/employee/my-leaves'])">Back to My Leaves</button>
+  </mat-card>
+} @else {
+  <p>Leave request not found.</p>
+}

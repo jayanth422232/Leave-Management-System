@@ -7,6 +7,9 @@ import { ManagerDashboardComponent } from './features/manager/dashboard/manager-
 import { AdminDashboardComponent } from './features/admin/dashboard/admin-dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
+import { ApplyLeaveComponent } from './features/employee/apply-leave/apply-leave.component';
+import { MyLeavesComponent } from './features/employee/my-leaves/my-leaves.component';
+import { LeaveDetailsComponent } from './features/employee/leave-details/leave-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,8 +26,9 @@ export const routes: Routes = [
         data: { roles: ['EMPLOYEE'] },
         children: [
           { path: 'dashboard', component: EmployeeDashboardComponent },
-          { path: 'apply-leave', component: PlaceholderComponent, data: { title: 'Apply Leave' } },
-          { path: 'my-leaves', component: PlaceholderComponent, data: { title: 'My Leaves' } },
+          { path: 'apply-leave', component: ApplyLeaveComponent },
+          { path: 'my-leaves', component: MyLeavesComponent },
+          { path: 'my-leaves/:id', component: LeaveDetailsComponent },
           { path: 'leave-balance', component: PlaceholderComponent, data: { title: 'Leave Balance' } },
           { path: 'profile', component: PlaceholderComponent, data: { title: 'Profile' } },
         ],
