@@ -13,6 +13,18 @@ export class LeaveService {
     return this.http.get<LeaveType[]>(`${API_URL}/leaveTypes`);
   }
 
+    createLeaveType(type: Omit<LeaveType, 'id'>): Observable<LeaveType> {
+    return this.http.post<LeaveType>(`${API_URL}/leaveTypes`, type);
+  }
+
+  updateLeaveType(id: number, changes: Partial<LeaveType>): Observable<LeaveType> {
+    return this.http.patch<LeaveType>(`${API_URL}/leaveTypes/${id}`, changes);
+  }
+
+  deleteLeaveType(id: number): Observable<void> {
+    return this.http.delete<void>(`${API_URL}/leaveTypes/${id}`);
+  }
+
   getRequestsByUser(userId: number): Observable<LeaveRequest[]> {
     return this.http.get<LeaveRequest[]>(`${API_URL}/leaveRequests`, {
       params: { userId },

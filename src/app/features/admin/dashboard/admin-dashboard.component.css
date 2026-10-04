@@ -1,0 +1,2 @@
+.cards-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.cards-row app-summary-card { flex: 1 1 160px; }

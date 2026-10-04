@@ -14,6 +14,9 @@ import { PendingApprovalsComponent } from './features/manager/pending-approvals/
 import { ReviewLeaveComponent } from './features/manager/review-leave/review-leave.component';
 import { TeamLeavesComponent } from './features/manager/team-leaves/team-leaves.component';
 import { TeamCalendarComponent } from './features/manager/team-calendar/team-calendar.component';
+import { EmployeesComponent } from './features/admin/employees/employees.component';
+import { LeaveTypesComponent } from './features/admin/leave-types/leave-types.component';
+import { ReportsComponent } from './features/admin/reports/reports.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -55,9 +58,9 @@ export const routes: Routes = [
         data: { roles: ['ADMIN'] },
         children: [
           { path: 'dashboard', component: AdminDashboardComponent },
-          { path: 'employees', component: PlaceholderComponent, data: { title: 'Employees' } },
-          { path: 'leave-types', component: PlaceholderComponent, data: { title: 'Leave Types' } },
-          { path: 'reports', component: PlaceholderComponent, data: { title: 'Reports' } },
+          { path: 'employees', component: EmployeesComponent },
+          { path: 'leave-types', component: LeaveTypesComponent },
+          { path: 'reports', component: ReportsComponent },
         ],
       },
     ],

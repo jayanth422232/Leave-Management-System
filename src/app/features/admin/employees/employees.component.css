@@ -1,0 +1,4 @@
+.header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.filters { display: flex; gap: 16px; margin-bottom: 16px; }
+.full-width { width: 100%; }
+.empty { text-align: center; color: #888; padding: 16px; }

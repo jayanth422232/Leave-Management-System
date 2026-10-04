@@ -1,0 +1,68 @@
+<div class="header-row">
+  <h2>Employees</h2>
+  <button mat-flat-button color="primary" (click)="openAddDialog()">+ Add Employee</button>
+</div>
+
+<div class="filters">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input matInput [value]="searchText()" (input)="searchText.set($any($event.target).value)" placeholder="Name or email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Department</mat-label>
+    <mat-select [value]="departmentFilter()" (selectionChange)="departmentFilter.set($event.value)">
+      <mat-option value="ALL">All</mat-option>
+      @for (dept of departments(); track dept) {
+        <mat-option [value]="dept">{{ dept }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else {
+  <table mat-table [dataSource]="filteredUsers()" class="full-width">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let u">{{ u.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let u">{{ u.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef>Department</th>
+      <td mat-cell *matCellDef="let u">{{ u.department }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef>Role</th>
+      <td mat-cell *matCellDef="let u">{{ u.role }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Active</th>
+      <td mat-cell *matCellDef="let u">
+        <mat-slide-toggle [checked]="u.active" (change)="toggleActive(u)" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let u">
+        <button mat-button (click)="openEditDialog(u)">Edit</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+  </table>
+
+  @if (filteredUsers().length === 0) {
+    <p class="empty">No employees match your filters.</p>
+  }
+}
