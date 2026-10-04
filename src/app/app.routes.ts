@@ -13,6 +13,7 @@ import { LeaveDetailsComponent } from './features/employee/leave-details/leave-d
 import { PendingApprovalsComponent } from './features/manager/pending-approvals/pending-approvals.component';
 import { ReviewLeaveComponent } from './features/manager/review-leave/review-leave.component';
 import { TeamLeavesComponent } from './features/manager/team-leaves/team-leaves.component';
+import { TeamCalendarComponent } from './features/manager/team-calendar/team-calendar.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -45,7 +46,7 @@ export const routes: Routes = [
           { path: 'team-leaves', component: TeamLeavesComponent },
           { path: 'pending-approvals', component: PendingApprovalsComponent },
           { path: 'review-leave/:id', component: ReviewLeaveComponent },
-          { path: 'team-calendar', component: PlaceholderComponent, data: { title: 'Team Calendar' } },
+          { path: 'team-calendar', component: TeamCalendarComponent },
         ],
       },
       {

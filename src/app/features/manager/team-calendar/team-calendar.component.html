@@ -1,0 +1,50 @@
+<h2>Team Calendar</h2>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else {
+  <div class="calendar-header">
+    <button mat-icon-button (click)="prevMonth()"><mat-icon>chevron_left</mat-icon></button>
+    <span class="month-label">{{ monthLabel() }}</span>
+    <button mat-icon-button (click)="nextMonth()"><mat-icon>chevron_right</mat-icon></button>
+  </div>
+
+  <div class="calendar-grid">
+    <div class="day-name">Mon</div>
+    <div class="day-name">Tue</div>
+    <div class="day-name">Wed</div>
+    <div class="day-name">Thu</div>
+    <div class="day-name">Fri</div>
+    <div class="day-name">Sat</div>
+    <div class="day-name">Sun</div>
+
+    @for (week of weeks(); track $index) {
+      @for (cell of week; track cell.isoDate + $index) {
+        <div
+          class="day-cell"
+          [class.empty]="cell.date === null"
+          [class.today]="cell.isToday"
+          [class.selected]="cell.isoDate === selectedDate()"
+          (click)="selectDay(cell)"
+        >
+          @if (cell.date !== null) {
+            <span class="day-number">{{ cell.date }}</span>
+            @if (cell.onLeaveNames.length > 0) {
+              <span class="leave-dot" [title]="cell.onLeaveNames.join(', ')"></span>
+            }
+          }
+        </div>
+      }
+    }
+  </div>
+
+  @if (selectedDate()) {
+    <div class="selected-info">
+      @if (selectedDayPeople().length > 0) {
+        <p><strong>On leave on {{ selectedDate() }}:</strong> {{ selectedDayPeople().join(', ') }}</p>
+      } @else {
+        <p>No one on the team is on leave on {{ selectedDate() }}.</p>
+      }
+    </div>
+  }
+}
