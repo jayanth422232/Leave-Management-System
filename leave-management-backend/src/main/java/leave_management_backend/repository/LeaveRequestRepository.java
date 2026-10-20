@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Long> {
-
+	boolean existsByLeaveType_LeaveTypeId(Long leaveTypeId);
     List<LeaveRequest> findByUser_UserIdOrderByAppliedOnDescRequestIdDesc(Long userId);
 
     List<LeaveRequest> findByStatusOrderByAppliedOnDescRequestIdDesc(String status);

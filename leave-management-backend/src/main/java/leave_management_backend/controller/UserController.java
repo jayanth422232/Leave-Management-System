@@ -2,13 +2,20 @@ package leave_management_backend.controller;
 
 import java.util.List;
 
-import jakarta.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import leave_management_backend.dto.UserCreateRequestDTO;
+import leave_management_backend.dto.UserPatchDTO;
 import leave_management_backend.dto.UserResponseDTO;
 import leave_management_backend.service.UserService;
 
@@ -35,6 +42,11 @@ public class UserController {
     @GetMapping("/manager/{managerId}")
     public ResponseEntity<List<UserResponseDTO>> getTeamMembers(@PathVariable Long managerId) {
         return ResponseEntity.ok(userService.getTeamMembers(managerId));
+    }
+    @PatchMapping("/{id}")
+    public ResponseEntity<UserResponseDTO> patchUser(@PathVariable Long id,
+                                                     @RequestBody UserPatchDTO dto) {
+        return ResponseEntity.ok(userService.patchUser(id, dto));
     }
 
     @PostMapping

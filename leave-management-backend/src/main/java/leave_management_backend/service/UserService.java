@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import leave_management_backend.dto.LoginRequestDTO;
 import leave_management_backend.dto.UserCreateRequestDTO;
+import leave_management_backend.dto.UserPatchDTO;
 import leave_management_backend.dto.UserResponseDTO;
 import leave_management_backend.entity.User;
 import leave_management_backend.exception.ResourceNotFoundException;
@@ -19,6 +20,44 @@ public class UserService {
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+    
+    public UserResponseDTO patchUser(Long id, UserPatchDTO dto) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+
+        if (dto.getName() != null && !dto.getName().isBlank()) {
+            user.setName(dto.getName());
+        }
+        if (dto.getEmail() != null && !dto.getEmail().isBlank()) {
+            userRepository.findByEmail(dto.getEmail())
+                    .filter(other -> !other.getUserId().equals(id))
+                    .ifPresent(other -> {
+                        throw new IllegalArgumentException("Email already in use");
+                    });
+            user.setEmail(dto.getEmail());
+        }
+        if (dto.getPassword() != null && !dto.getPassword().isBlank()) {
+            user.setPassword(dto.getPassword());
+        }
+        if (dto.getRole() != null && !dto.getRole().isBlank()) {
+            user.setRole(dto.getRole());
+        }
+        if (dto.getDepartment() != null && !dto.getDepartment().isBlank()) {
+            user.setDepartment(dto.getDepartment());
+        }
+        if (dto.getManagerId() != null) {
+            if (dto.getManagerId().equals(id)) {
+                throw new IllegalArgumentException("A user cannot be their own manager");
+            }
+            User manager = userRepository.findById(dto.getManagerId())
+                    .orElseThrow(() -> new ResourceNotFoundException("Manager not found with id: " + dto.getManagerId()));
+            user.setManager(manager);
+        }
+        if (dto.getActive() != null) {
+            user.setActive(dto.getActive());
+        }
+        return toResponseDTO(userRepository.save(user));
     }
 
     public UserResponseDTO login(LoginRequestDTO request) {
